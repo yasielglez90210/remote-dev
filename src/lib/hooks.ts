@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { TJobItemContent, TJobItem } from "./types";
 import { BASE_API_URL, REACT_QUERY_CONFIG } from "./constants";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { BookmarksContext } from "../contexts/BookmarksContextProvider";
 
 export function useActiveId() {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -189,4 +190,18 @@ export function useDebounced<T>(value: T, delay: number = 250): T {
   }, [value, delay]);
 
   return debouncedValue;
+}
+
+// -------------------------------------------------------
+
+export function useBookmarksContext() {
+  const context = useContext(BookmarksContext);
+
+  if (!context) {
+    throw new Error(
+      "useBookmarksContext must be used within a BookmarksContextProvider"
+    );
+  }
+
+  return context;
 }
