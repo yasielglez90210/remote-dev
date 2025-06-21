@@ -11,3 +11,5 @@ export const REACT_QUERY_CONFIG = {
   retryDelay: 2000, // Wait 2 seconds before retrying
   keepPreviousData: false, // Keep previous data while loading new data
 };
+
+export const MAX_PER_PAGE = 7; // Maximum items per page for pagination

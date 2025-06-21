@@ -17,3 +17,7 @@ export type TJobItemContent = TJobItem & {
   coverImgURL: string;
   companyURL: string;
 };
+
+export type TPageDirection = "next" | "prev";
+
+export type TSortBy = "relevant" | "recent";
