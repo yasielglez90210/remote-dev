@@ -5,7 +5,7 @@ import Spinner from "./Spinner";
 
 type JobListProps = {
   jobItems: TJobItem[];
-  isLoading?: boolean;
+  isLoading: boolean;
 };
 
 export function JobList({ jobItems, isLoading }: JobListProps) {
