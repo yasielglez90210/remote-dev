@@ -1,8 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
+import { useJobItemsByIds } from "../lib/hooks";
+import { TJobItemContent } from "../lib/types";
 
 type TBookmarksContext = {
   bookmarkedIds: number[];
   handleBookmarkToggle: (jobId: number) => void;
+  bookmarkedJobItems: TJobItemContent[];
+  isLoading: boolean;
 };
 
 export const BookmarksContext = createContext<TBookmarksContext | null>(null);
@@ -18,6 +22,9 @@ export default function BookmarksContextProvider({
   const [bookmarkedIds, setBookmarkedIds] = useState<number[]>(() =>
     JSON.parse(localStorage.getItem("bookmarkedIds") || "[]")
   );
+
+  const { jobItems: bookmarkedJobItems, isLoading } =
+    useJobItemsByIds(bookmarkedIds);
 
   const handleBookmarkToggle = (jobId: number) => {
     setBookmarkedIds((prev) =>
@@ -36,6 +43,8 @@ export default function BookmarksContextProvider({
       value={{
         bookmarkedIds,
         handleBookmarkToggle,
+        bookmarkedJobItems,
+        isLoading,
       }}
     >
       {children}
