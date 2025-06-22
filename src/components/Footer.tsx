@@ -4,16 +4,11 @@ export default function Footer() {
       <small>
         <p>
           © Copyright by{" "}
-          <a href="https://bytegrad.com" target="_blank">
-            ByteGrad.com
+          <a href="https://www.linkedin.com/in/yasiel-glez" target="_blank">
+            Yasiel Gonzalez
           </a>
-          . Intended for learning or your portfolio.
         </p>
       </small>
-
-      <p>
-        <span className="u-bold">109573</span> total jobs available
-      </p>
     </footer>
   );
 }
